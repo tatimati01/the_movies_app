@@ -1,11 +1,11 @@
 import React from 'react';
 
-const HomePage = () => {
+const GenresList = () => {
     return (
         <div>
-            Hello!
+            GenresList
         </div>
     );
 };
 
-export default HomePage;
+export default GenresList;

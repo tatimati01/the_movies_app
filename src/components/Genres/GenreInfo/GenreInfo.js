@@ -1,11 +1,11 @@
 import React from 'react';
 
-const HomePage = () => {
+const GenreInfo = () => {
     return (
         <div>
-            Hello!
+            GenreInfo
         </div>
     );
 };
 
-export default HomePage;
+export default GenreInfo;

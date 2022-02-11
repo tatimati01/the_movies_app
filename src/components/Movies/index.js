@@ -1,2 +1,5 @@
 export * from './MoviesList/MoviesList'
 export * from './MovieCard/MovieCard'
+export * from './MovieInfo/MovieInfo'
+export * from './StarsRating/StarsRating'
+export * from './PosterPreview/PosterPreview'

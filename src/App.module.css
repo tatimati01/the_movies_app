@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    padding: 20px 100px;
+    background: black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar a {
+    text-decoration: none;
+    font-size: x-large;
+    font-weight: bold;
+    color: lightblue;
+    margin: 10px;
+}
+
+.navbar a:hover {
+    color: mediumpurple;
+}
+
+.navbar a[class='active'] {
+    border-bottom: mediumpurple 2px solid;
+    color: mediumpurple;
+}
+
+.userInfo {
+    display: flex;
+}
+
+.userInfo h3 {
+    color: white;
+    font-weight: bold;
+    display: flex;
+    margin: 10px;
+    align-content: center;
+}
+
+.userAvatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin: 5px;
+    background: lightsalmon;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainContent {
+    border-top: lightblue 2px solid;
+    border-bottom: lightblue 2px solid;
+    padding: 40px 100px;
+    background: black;
+    color: lightblue;
+    min-height: 66vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.footer {
+    background: black;
+    padding: 20px 100px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: lightblue;
+}

@@ -55,7 +55,7 @@ body {
 .mainContent {
     border-top: lightblue 2px solid;
     border-bottom: lightblue 2px solid;
-    padding: 40px 100px;
+    padding: 40px;
     background: black;
     color: lightblue;
     min-height: 90vh;

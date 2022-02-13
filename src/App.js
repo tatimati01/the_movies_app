@@ -7,7 +7,6 @@ import MoviesPage from "./pages/MoviesPage/MoviesPage";
 import GenresPage from "./pages/GenresPage/GenresPage";
 import MovieCard from "./components/Movies/MovieCard/MovieCard";
 import GenreInfo from "./components/Genres/GenreInfo/GenreInfo";
-import MoviesList from "./components/Movies/MoviesList/MoviesList";
 
 function App() {
     return (

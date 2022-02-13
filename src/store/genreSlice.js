@@ -6,7 +6,6 @@ export const getAllGenres = createAsyncThunk(
     async (_, {rejectWithValue}) => {
         try {
             const genres = await genresService.getAllGenres().then(value => value.data.genres)
-            console.log(genres);
             return genres
         } catch (e) {
             return rejectWithValue(e.message)
@@ -33,7 +32,7 @@ const genreSlice = createSlice({
         },
         [getAllGenres.fulfilled]: (state, action) => {
             state.status = 'fulfilled'
-            state.movies = action.payload
+            state.genres = action.payload
         },
         [getAllGenres.rejected]: (state, action) => {
             state.status = 'rejected'

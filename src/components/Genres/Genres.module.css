@@ -1,19 +1,36 @@
 .genresWrapper {
     display: flex;
     justify-content: center;
-    border: lightblue solid 2px;
     width: 90%;
+    background: rgba(173, 216, 230, 0.1);
+    border-radius: 20px;
 }
 
 .genresBar {
-    width: 90%;
-    height: 50px;
-    background: lightgray;
     padding: 20px;
     display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    height: 200px;
+    /*box-sizing: content-box;*/
 }
 
 .genreStyle {
-    padding: 20px;
-    border: mediumpurple solid 2px;
+    width: 100px;
+    height: 40px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: rgba(173, 216, 230, 0.1) 5px 5px 5px;
+}
+
+.genreInfo {
+    background: white;
+    margin: 5px;
 }

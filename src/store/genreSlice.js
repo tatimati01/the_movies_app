@@ -2,11 +2,13 @@ import {createSlice} from "@reduxjs/toolkit";
 
 const genreSlice = createSlice({
     name: 'genreSlice',
-    initialState: {},
+    initialState: {
+        genres: []
+    },
     reducers: {
-        getGenres: ((state, action) => {
-
-        })
+        // getGenres: ((state, action) => {
+        //
+        // })
     }
 });
 

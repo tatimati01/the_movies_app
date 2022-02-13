@@ -1,23 +1,31 @@
-import React from 'react';
-import {useSelector} from "react-redux";
+import React, {useEffect, useState} from 'react';
+// import {useDispatch, useSelector} from "react-redux";
+// import {getMovies} from "../../../store/movieSlice";
+import MovieCard from "../MovieCard/MovieCard";
+import {moviesService} from "../../../services/moviesService";
+import {useDispatch, useSelector} from "react-redux";
 
-// import {getMovies} from '../../../store/movieSlice'
 
 const MoviesList = () => {
-    const {movies} = useSelector(state => state['moviesReducer']);
+    const {movies} = useSelector(state => state.moviesReducer);
+    // const [movies, setMovies] = useState([]);
+
+    // useEffect(() => {
+    //     moviesService.getAllMovies().then(value => {
+    //         const {data: {results}} = value;
+    //         setMovies(results);
+    //     })
+    // }, [])
     //
     // const dispatch = useDispatch();
     //
     // useEffect(()=> {
-    //     dispatch(getAllMovies())
-    // },[dispatch()])
+    //     dispatch()
+    // })
 
-
-    return (
-        <div>
-            {movies}
-        </div>
-    );
+    return (<div>
+            {movies && movies.map(movie => <MovieCard key={movie.id} movie={movie}/>)}
+        </div>);
 };
 
 export default MoviesList;

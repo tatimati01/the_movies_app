@@ -1,9 +1,11 @@
 import React from 'react';
 
-const MovieCard = () => {
+const MovieCard = ({movie}) => {
+const {id, title} = movie
+
     return (
         <div>
-            MovieCard
+            {id} - {title}
         </div>
     );
 };

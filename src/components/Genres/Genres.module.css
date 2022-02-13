@@ -1,0 +1,19 @@
+.genresWrapper {
+    display: flex;
+    justify-content: center;
+    border: lightblue solid 2px;
+    width: 90%;
+}
+
+.genresBar {
+    width: 90%;
+    height: 50px;
+    background: lightgray;
+    padding: 20px;
+    display: flex;
+}
+
+.genreStyle {
+    padding: 20px;
+    border: mediumpurple solid 2px;
+}

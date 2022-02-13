@@ -21,8 +21,8 @@ function App() {
                         </Route>
                     </Route>
                     <Route path={'genres'} element={<GenresPage/>}>
-                        <Route path={':genreId'} element={<GenreInfo/>}>
-                            {/*<Route path={'moviesByGenre'} element={<MoviesList/>}/>*/}
+                        <Route path={':genreName'} element={<GenreInfo/>}>
+                            {/*<Route path={':'} element={<MoviesList/>}/>*/}
                         </Route>
                     </Route>
                     <Route path={'*'} element={<NotFoundPage/>}/>

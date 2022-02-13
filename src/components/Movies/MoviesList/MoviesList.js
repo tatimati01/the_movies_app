@@ -11,10 +11,13 @@ const MoviesList = () => {
 
     useEffect(()=> {
         dispatch(getAllMovies())
-    })
+    },[dispatch])
 
-    return (<div>
-            {movies && movies.map(movie => <MovieCard key={movie.id} movie={movie}/>)}
+    return (
+        <div>
+            {status === 'pending' && <h2>Loading...</h2>}
+            {error && <h2>{error}</h2>}
+            {movies.map(movie => <MovieCard key={movie.id} movie={movie}/>)}
         </div>);
 };
 

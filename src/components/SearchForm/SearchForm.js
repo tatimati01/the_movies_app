@@ -1,7 +1,6 @@
 import React from 'react';
 import {useForm} from "react-hook-form";
 import {useDispatch} from "react-redux";
-import {getMovieByTitle} from "../../store/movieSlice";
 
 const SearchForm = () => {
     const {handleSubmit, register, reset} = useForm();
@@ -9,7 +8,7 @@ const SearchForm = () => {
     const dispatch = useDispatch();
 
     function onSearchSubmit(movieTitle) {
-        dispatch(getMovieByTitle({movieTitle}))
+        dispatch()
         reset()
     }
     return (

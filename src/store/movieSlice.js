@@ -7,14 +7,18 @@ import {moviesService} from "../services/moviesService";
 const movieSlice = createSlice({
     name: 'movieSlice',
     initialState: {
-        movies: {}
+        movies: {},
+        search: ''
     },
     reducers: {
         getMovies: ((state, action) => {
             moviesService.getAllMovies().then(value => {
                 const {data: {results}} = value;
-
+                console.log(results);
             })
+        }),
+        getMovieByTitle: ((state, action) => {
+
         })
     }
 });
@@ -23,4 +27,4 @@ const movieSlice = createSlice({
 const moviesReducer = movieSlice.reducer;
 export default moviesReducer;
 
-export const {getMovies} = movieSlice.actions;
+export const {getMovies,getMovieByTitle} = movieSlice.actions;

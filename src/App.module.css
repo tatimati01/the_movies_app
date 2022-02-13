@@ -58,7 +58,7 @@ body {
     padding: 40px 100px;
     background: black;
     color: lightblue;
-    min-height: 66vh;
+    min-height: 90vh;
     overflow: hidden;
     display: flex;
     justify-content: center;

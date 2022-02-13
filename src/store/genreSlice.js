@@ -6,9 +6,9 @@ const genreSlice = createSlice({
         genres: []
     },
     reducers: {
-        // getGenres: ((state, action) => {
-        //
-        // })
+        getGenres: ((state, action) => {
+
+        })
     }
 });
 

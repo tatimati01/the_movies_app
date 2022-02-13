@@ -6,7 +6,8 @@ export const imageURL = 'http://image.tmdb.org/t/p/';
 
 export const urls = {
     movies: `/discover/movie`,
-    genres: `/genre/movie/list`
+    genres: `/genre/movie/list`,
+    search: `/search/movie`
 };
 
 export default baseURL;

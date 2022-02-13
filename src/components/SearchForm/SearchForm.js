@@ -2,7 +2,6 @@ import React from 'react';
 import {useForm} from "react-hook-form";
 import {useDispatch} from "react-redux";
 import {getMovieByTitle} from "../../store/movieSlice";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const SearchForm = () => {
     const {handleSubmit, register, reset} = useForm();
@@ -13,12 +12,11 @@ const SearchForm = () => {
         dispatch(getMovieByTitle({movieTitle}))
         reset()
     }
-
     return (
         <div>
             <form onSubmit={handleSubmit(onSearchSubmit)}>
                 <input type="text" {...register('search')}/>
-                <button><FontAwesomeIcon icon="fa-solid fa-magnifying-glass"/>Search</button>
+                <button>Search</button>
             </form>
         </div>
     );

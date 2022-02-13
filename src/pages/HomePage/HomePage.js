@@ -1,9 +1,10 @@
 import React from 'react';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const HomePage = () => {
     return (
         <div>
-            Hello!
+            Hello! <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
         </div>
     );
 };

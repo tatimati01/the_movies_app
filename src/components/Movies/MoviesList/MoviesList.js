@@ -1,30 +1,20 @@
 import React, {useEffect} from 'react';
-// import {useDispatch, useSelector} from "react-redux";
-// import {getMovies} from "../../../store/movieSlice";
 import MovieCard from "../MovieCard/MovieCard";
-// import {moviesService} from "../../../services/moviesService";
 import {useDispatch, useSelector} from "react-redux";
+import {getAllMovies} from "../../../store/movieSlice";
 
 
 const MoviesList = () => {
-    const {movies} = useSelector(state => state['movieReducer']);
-    // const [movies, setMovies] = useState([]);
-    //
-    // useEffect(() => {
-    //     moviesService.getAllMovies().then(value => {
-    //         const {data: {results}} = value;
-    //         setMovies(results);
-    //     })
-    // }, [])
-    //
+    const {movies, status, error} = useSelector(state => state['moviesReducer']);
+
     const dispatch = useDispatch();
 
     useEffect(()=> {
-        dispatch()
+        dispatch(getAllMovies())
     })
 
     return (<div>
-            {movies && movies.map(movie => <MovieCard key={movie.id} movie={movie}/>)}
+            {/*{movies && movies.map(movie => <MovieCard key={movie.id} movie={movie}/>)}*/}
         </div>);
 };
 

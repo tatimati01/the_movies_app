@@ -18,9 +18,22 @@ export const getMovieById = createAsyncThunk(
     async (id,{rejectWithValue})=> {
         try {
             const movieId = id.id;
-            console.log(movieId);
             const movie = await moviesService.getMovieById(movieId).then(value => value.data)
             return movie
+        } catch (e) {
+            return rejectWithValue(e.message)
+        }
+    }
+);
+
+export const getMovieImage = createAsyncThunk(
+    'movieSlice/getMovieImage',
+    async (id,{rejectWithValue})=> {
+        try {
+            const movieId = id;
+            const images = await moviesService.getMovieImage(movieId).then(value => value.data.posters)
+            // console.log(images);
+            return images
         } catch (e) {
             return rejectWithValue(e.message)
         }
@@ -31,10 +44,11 @@ const movieSlice = createSlice({
     name: 'movieSlice',
     initialState: {
         movies: [],
-        movie: null,
+        movie: {},
         search: '',
         status: null,
-        error: null
+        error: null,
+        images: []
     },
     reducers: {
         // getMovies: ((state, action) => {
@@ -76,6 +90,11 @@ const movieSlice = createSlice({
         [getMovieById.rejected]: (state, action) => {
             state.status = 'rejected'
             state.error = action.payload
+        },
+        [getMovieImage.fulfilled]: (state, action) => {
+            state.status = 'fulfilled'
+            state.images = action.payload
+            // console.log(action.payload);
         }
     }
 });

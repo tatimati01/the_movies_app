@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import MovieCard from "../MovieCard/MovieCard";
 import {useDispatch, useSelector} from "react-redux";
 import {getAllMovies} from "../../../store/movieSlice";
+import css from '../Movies.module.css'
 
 
 const MoviesList = () => {
@@ -9,12 +10,12 @@ const MoviesList = () => {
 
     const dispatch = useDispatch();
 
-    useEffect(()=> {
+    useEffect(() => {
         dispatch(getAllMovies())
-    },[dispatch])
+    }, [dispatch])
 
     return (
-        <div>
+        <div className={css.movieWrapper}>
             {status === 'pending' && <h2>Loading...</h2>}
             {error && <h2>{error}</h2>}
             {movies.map(movie => <MovieCard key={movie.id} movie={movie}/>)}

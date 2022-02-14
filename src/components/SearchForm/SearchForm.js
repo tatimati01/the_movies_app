@@ -1,6 +1,7 @@
 import React from 'react';
 import {useForm} from "react-hook-form";
 import {useDispatch} from "react-redux";
+import css from '../../App.module.css'
 
 const SearchForm = () => {
     const {handleSubmit, register, reset} = useForm();
@@ -12,7 +13,7 @@ const SearchForm = () => {
         reset()
     }
     return (
-        <div>
+        <div className={css.formStyle}>
             <form onSubmit={handleSubmit(onSearchSubmit)}>
                 <input type="text" {...register('search')}/>
                 <button>Search</button>

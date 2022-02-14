@@ -2,12 +2,12 @@ import React from 'react';
 import {NavLink,Outlet} from "react-router-dom";
 import css from '../Genres.module.css'
 
-const GenreInfo = ({genre}) => {
+const MoviesOfGenre = ({name}) => {
     return (
         <div className={css.genreStyle}>
-            <NavLink to={`${genre.name.toLowerCase()}`}>{genre.name}</NavLink>
+            <NavLink to={`${name.toLowerCase()}`}>{name}</NavLink>
         </div>
     );
 };
 
-export default GenreInfo;
+export default MoviesOfGenre;

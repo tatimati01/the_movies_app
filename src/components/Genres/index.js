@@ -1,3 +1,3 @@
 export * from './GenreBadge/GenreBadge'
-export * from './GenreInfo/GenreInfo'
+export * from './MoviesOfGenre/MoviesOfGenre'
 export * from './GenresList/GenresList'

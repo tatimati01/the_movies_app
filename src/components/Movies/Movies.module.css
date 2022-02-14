@@ -1,0 +1,13 @@
+.movieWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.movieItem {
+    width: 260px;
+    height: 400px;
+    border-radius: 20px;
+    background: rgba(173, 216, 230, 0.1);
+    padding: 10px;
+}

@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import GenreInfo from "../GenreInfo/GenreInfo";
+import MoviesOfGenre from "../MoviesOfGenre/MoviesOfGenre";
 import {useDispatch, useSelector} from "react-redux";
 import {getAllGenres} from "../../../store/genreSlice";
 import css from '../Genres.module.css';
@@ -18,7 +18,7 @@ const GenresList = () => {
         <div className={css.genresBar}>
             {status === 'pending' && <h2>Loading...</h2>}
             {error && <h2>{error}</h2>}
-            {genres.map(genre=> <GenreInfo key={genre.id} genre={genre}/>)}
+            {genres.map(genre=> <MoviesOfGenre key={genre.name} name={genre.name}/>)}
         </div>
     );
 };

@@ -30,6 +30,15 @@
     box-shadow: rgba(173, 216, 230, 0.1) 5px 5px 5px;
 }
 
+.genreStyle a {
+    text-decoration: none;
+    color: lightblue;
+}
+
+.genreStyle a:hover {
+    color: mediumpurple;
+}
+
 .genreInfo {
     background: white;
     margin: 5px;

@@ -6,7 +6,8 @@ import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import MoviesPage from "./pages/MoviesPage/MoviesPage";
 import GenresPage from "./pages/GenresPage/GenresPage";
 import MovieCard from "./components/Movies/MovieCard/MovieCard";
-import GenreInfo from "./components/Genres/GenreInfo/GenreInfo";
+import MoviesOfGenre from "./components/Genres/MoviesOfGenre/MoviesOfGenre";
+import MovieInfo from "./components/Movies/MovieInfo/MovieInfo";
 
 function App() {
     return (
@@ -15,12 +16,12 @@ function App() {
                 <Route path={'/'} element={<Layout/>}>
                     <Route index element={<HomePage/>}/>
                     <Route path={'movies'} element={<MoviesPage/>}>
-                        <Route path={':movieId'} element={<MovieCard/>}>
+                        <Route path={':movieId'} element={<MovieInfo/>}>
                             {/*<Route path={''}/>*/}
                         </Route>
                     </Route>
                     <Route path={'genres'} element={<GenresPage/>}>
-                        <Route path={':genreName'} element={<GenreInfo/>}>
+                        <Route path={':genreName'} element={<MoviesOfGenre/>}>
                             {/*<Route path={':'} element={<MoviesList/>}/>*/}
                         </Route>
                     </Route>

@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
-import MoviesOfGenre from "../MoviesOfGenre/MoviesOfGenre";
 import {useDispatch, useSelector} from "react-redux";
+import {NavLink, Outlet} from "react-router-dom";
+
 import {getAllGenres} from "../../../store/genreSlice";
 import css from '../Genres.module.css';
-import {Outlet} from "react-router-dom";
 
 const GenresList = () => {
     const {genres, status, error} = useSelector(state => state['genresReducer']);
@@ -13,13 +13,30 @@ const GenresList = () => {
         dispatch(getAllGenres())
     }, [dispatch])
 
-
+    // const moviesOfGenreGetter = (id) => {
+    //
+    // }
     return (
-        <div className={css.genresBar}>
-            {status === 'pending' && <h2>Loading...</h2>}
-            {error && <h2>{error}</h2>}
-            {genres.map(genre=> <MoviesOfGenre key={genre.name} name={genre.name}/>)}
+        <div>
+            <div className={css.genresBar}>
+                {status === 'pending' && <h2>Loading...</h2>}
+                {error && <h2>{error}</h2>}
+                {genres.map(genre =>
+                    <div key={genre.name} className={css.genreStyle}>
+                        <button onClick={(e) => {
+                            e.preventDefault()
+                            // moviesOfGenreGetter(genre.id)
+                        }}>
+                            <NavLink to={`${genre.name.toLowerCase()}`} genre={genre}>{genre.name}</NavLink>
+                        </button>
+                    </div>
+                )}
+            </div>
+            <div className={css.outlet}>
+                <Outlet/>
+            </div>
         </div>
+
     );
 };
 

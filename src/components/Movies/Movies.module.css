@@ -1,13 +1,20 @@
 .movieWrapper {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 10px;
+}
+
+.movieWrapper button {
+    background: none;
+    color: white;
+    border: none;
 }
 
 .movieItem {
     width: 240px;
     box-sizing: border-box;
-    height: 340px;
+    height: 360px;
     border-radius: 20px;
     background: rgba(173, 216, 230, 0.1);
     padding: 10px;
@@ -24,10 +31,10 @@
 }
 
 .titleBox {
-    height: 60px;
+    height: 80px;
     display: flex;
     justify-content: center;
-    align-content: center;
+    align-items: center;
 }
 
 .titleBox h3 {
@@ -46,6 +53,11 @@
     margin: 5px 0;
 }
 
+.genresListItem p {
+    font-weight: bold;
+    margin: 10px 0;
+}
+
 .btnDetails {
     display: flex;
     justify-content: center;
@@ -61,7 +73,7 @@
     font-weight: bold;
 }
 
-.btnDetails button>a {
+.btnDetails button > a {
     text-decoration: none;
     color: white;
 }

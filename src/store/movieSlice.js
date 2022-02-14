@@ -1,5 +1,8 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+
 import {moviesService} from "../services/moviesService";
+import {genresService} from "../services/genresService";
+
 
 export const getAllMovies = createAsyncThunk(
     'movieSlice/getAllMovies',
@@ -13,9 +16,10 @@ export const getAllMovies = createAsyncThunk(
     }
 );
 
+
 export const getMovieById = createAsyncThunk(
     'movieSlice/getMovieById',
-    async (id,{rejectWithValue})=> {
+    async (id, {rejectWithValue}) => {
         try {
             const movieId = id.id;
             const movie = await moviesService.getMovieById(movieId).then(value => value.data)
@@ -26,14 +30,41 @@ export const getMovieById = createAsyncThunk(
     }
 );
 
+
 export const getMovieImage = createAsyncThunk(
     'movieSlice/getMovieImage',
-    async (id,{rejectWithValue})=> {
+    async (id, {rejectWithValue}) => {
         try {
-            const movieId = id;
-            const images = await moviesService.getMovieImage(movieId).then(value => value.data.posters)
-            // console.log(images);
+            const images = await moviesService.getMovieImage(id).then(value => value.data.posters)
             return images
+        } catch (e) {
+            return rejectWithValue(e.message)
+        }
+    }
+);
+
+
+export const getMovieGenresList = createAsyncThunk(
+    'movieSlice/getMovieGenresList',
+    async (id, {rejectWithValue}) => {
+        const getters = [
+            moviesService.getAllMovies().then(value => value.data.results),
+            genresService.getAllGenres().then(value => value.data.genres)
+        ]
+
+        try {
+            const [movies, genres] = await Promise.all(getters)
+
+            const allMoviesGenres = movies.map(movieGenres => {
+                const {genre_ids} = movieGenres;
+
+                const movieGenresList = genre_ids.map(genreId => genres.find(item => item.id === genreId))
+
+                return {
+                    ...movieGenres,
+                    movieGenresList
+                }
+            })
         } catch (e) {
             return rejectWithValue(e.message)
         }
@@ -48,26 +79,12 @@ const movieSlice = createSlice({
         search: '',
         status: null,
         error: null,
-        images: []
+        images: [],
+        movieGenresList: [],
     },
-    reducers: {
-        // getMovies: ((state, action) => {
-        //     moviesService.getAllMovies().then(value => {
-        //         const {data: {results}} = value;
-        //         console.log(results);
-        //     })
-        // }),
-        // getMovieById: ((state, action) => {
-        //
-        // }),
-        // getMovieByTitle: ((state, action) => {
-        //     const movieTitle = action.payload.movieTitle;
-        //     console.log(movieTitle);
-        //     console.log(state.movies.movie.title);
-        // })
-    },
+    reducers: {},
     extraReducers: {
-        [getAllMovies.pending]: (state, action) => {
+        [getAllMovies.pending]: (state) => {
             state.status = 'pending'
             state.error = null
         },
@@ -79,7 +96,9 @@ const movieSlice = createSlice({
             state.status = 'rejected'
             state.error = action.payload
         },
-        [getMovieById.pending]: (state, action) => {
+
+
+        [getMovieById.pending]: (state) => {
             state.status = 'pending'
             state.error = null
         },
@@ -91,16 +110,36 @@ const movieSlice = createSlice({
             state.status = 'rejected'
             state.error = action.payload
         },
+
+
+        [getMovieImage.pending]: (state) => {
+            state.status = 'pending'
+            state.error = null
+        },
         [getMovieImage.fulfilled]: (state, action) => {
             state.status = 'fulfilled'
             state.images = action.payload
-            // console.log(action.payload);
+        },
+        [getMovieImage.rejected]: (state, action) => {
+            state.status = 'rejected'
+            state.error = action.payload
+        },
+
+
+        [getMovieGenresList.pending]: (state) => {
+            state.status = 'pending'
+            state.error = null
+        },
+        [getMovieGenresList.fulfilled]: (state, action) => {
+            state.status = 'fulfilled'
+            state.movieGenresList = action.payload
+        },
+        [getMovieGenresList.rejected]: (state, action) => {
+            state.status = 'rejected'
+            state.error = action.payload
         }
     }
 });
 
-
 const moviesReducer = movieSlice.reducer;
 export default moviesReducer;
-
-// export const {getMovies, getMovieById, getMovieByTitle} = movieSlice.actions;

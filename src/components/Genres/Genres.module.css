@@ -12,14 +12,19 @@
     justify-content: center;
     gap: 10px;
     flex-wrap: wrap;
-    height: 200px;
-    /*box-sizing: content-box;*/
+    box-sizing: content-box;
 }
 
 .genreStyle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.genreStyle button {
     width: 100px;
     height: 40px;
-    padding: 10px;
+    padding: 30px 60px;
     background: rgba(0, 0, 0, 0.6);
     border-radius: 10px;
     display: flex;
@@ -39,7 +44,16 @@
     color: mediumpurple;
 }
 
+.genreStyle a[class='active'] {
+    color: mediumpurple;
+}
+
 .genreInfo {
     background: white;
     margin: 5px;
+}
+
+.outlet {
+    border: 2px solid lightblue;
+    margin: 20px;
 }

@@ -1,38 +1,19 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
-import {getMovieGenresList} from "../../../store/movieSlice";
+import {getMovieById, getMovieGenresList} from "../../../store/movieSlice";
 import css from '../Movies.module.css'
 import {imageURL} from "../../../configs/urls";
 
 const MovieCard = ({movie}) => {
     const {id, title, backdrop_path, overview, genre_ids} = movie;
-
-    const {movieGenresList} = useSelector(state => state['moviesReducer']);
-
-
-
-//     const movieGenresGetter = (id) => {
-//         for (const genre of genres) {
-// const array = []
-//             if (genre.id===genre_ids) {
-//                 array.push(genre.id)
-//                 console.log(array);
-//             }
-//         }
-//     }
-//
-//     console.log(movieGenresGetter(id));
-//     // const genresId = genres.map(genre=> genre_ids.filter(item=> item === genre.id))
-//     //
-//     // console.log(genresId);
     const dispatch = useDispatch();
-
-
-    useEffect(() => {
-        dispatch(getMovieGenresList())
-    }, [dispatch])
+    const navigater = useNavigate();
+    //
+    // const getToDetails = (id)=> {
+    //     navigater(`${id.toString()}`)
+    // }
 
     return (
         <div className={css.movieItem}>
@@ -45,12 +26,6 @@ const MovieCard = ({movie}) => {
             <div className={css.overviewBox}>
                 <p>{overview}</p>
             </div>
-            {/*<div className={css.genresListItem}>*/}
-            {/*    {movieGenresList.map((genre) =>*/}
-            {/*        <p key={genre.name}>*/}
-            {/*            - {genre.name}*/}
-            {/*        </p>)}*/}
-            {/*</div>*/}
             <div className={css.btnDetails}>
                 <button>
                     <Link to={id.toString()}>Details</Link>

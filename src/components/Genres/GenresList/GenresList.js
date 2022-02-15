@@ -4,6 +4,8 @@ import {NavLink, Outlet} from "react-router-dom";
 
 import {getAllGenres} from "../../../store/genreSlice";
 import css from '../Genres.module.css';
+import MoviesOfGenre from "../MoviesOfGenre/MoviesOfGenre";
+import {moviesService} from "../../../services/moviesService";
 
 const GenresList = () => {
     const {genres, status, error} = useSelector(state => state['genresReducer']);
@@ -13,9 +15,6 @@ const GenresList = () => {
         dispatch(getAllGenres())
     }, [dispatch])
 
-    // const moviesOfGenreGetter = (id) => {
-    //
-    // }
     return (
         <div>
             <div className={css.genresBar}>
@@ -23,18 +22,13 @@ const GenresList = () => {
                 {error && <h2>{error}</h2>}
                 {genres.map(genre =>
                     <div key={genre.name} className={css.genreStyle}>
-                        <button onClick={(e) => {
-                            e.preventDefault()
-                            // moviesOfGenreGetter(genre.id)
-                        }}>
-                            <NavLink to={`${genre.name.toLowerCase()}`} genre={genre}>{genre.name}</NavLink>
+                        <button>
+                            <NavLink to={`${genre.name.toLowerCase()}`} name={genre.name}>{genre.name}</NavLink>
                         </button>
                     </div>
                 )}
             </div>
-            <div className={css.outlet}>
-                <Outlet/>
-            </div>
+            {<MoviesOfGenre/>}
         </div>
 
     );

@@ -5,9 +5,13 @@ import {Outlet} from "react-router-dom";
 
 const GenresPage = () => {
     return (
-        <div className={css.genresWrapper}>
-            <GenresList/>
-            <Outlet/>
+        <div className={css.genresPageStyle}>
+            <div className={css.genresWrapper}>
+                <GenresList/>
+            </div>
+            <div className={css.outlet}>
+                <Outlet/>
+            </div>
         </div>
     );
 };

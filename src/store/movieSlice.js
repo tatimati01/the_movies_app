@@ -6,9 +6,9 @@ import {genresService} from "../services/genresService";
 
 export const getAllMovies = createAsyncThunk(
     'movieSlice/getAllMovies',
-    async (_, {rejectWithValue}) => {
+    async (pageNumber, {rejectWithValue}) => {
         try {
-            const movies = await moviesService.getAllMovies().then(value => value.data.results)
+            const movies = await moviesService.getAllMovies(pageNumber).then(value => value.data.results)
             return movies
         } catch (e) {
             return rejectWithValue(e.message)
@@ -43,33 +43,43 @@ export const getMovieImage = createAsyncThunk(
     }
 );
 
-
-export const getMovieGenresList = createAsyncThunk(
-    'movieSlice/getMovieGenresList',
-    async (id, {rejectWithValue}) => {
-        const getters = [
-            moviesService.getAllMovies().then(value => value.data.results),
-            genresService.getAllGenres().then(value => value.data.genres)
-        ]
-
+export const getMovieOfGenre = createAsyncThunk(
+    'movieSlice/getMovieOfGenre',
+    async (genreName,{rejectWithValue}) => {
         try {
-            const [movies, genres] = await Promise.all(getters)
-
-            const allMoviesGenres = movies.map(movieGenres => {
-                const {genre_ids} = movieGenres;
-
-                const movieGenresList = genre_ids.map(genreId => genres.find(item => item.id === genreId))
-
-                return {
-                    ...movieGenres,
-                    movieGenresList
-                }
-            })
-        } catch (e) {
+            const moviesOfGenre = await moviesService.getMoviesOfGenre(genreName).then(value => console.log(value))
+            return moviesOfGenre
+        }catch (e) {
             return rejectWithValue(e.message)
         }
     }
 );
+// export const getMovieGenresList = createAsyncThunk(
+//     'movieSlice/getMovieGenresList',
+//     async (id, {rejectWithValue}) => {
+//         const getters = [
+//             moviesService.getAllMovies().then(value => value.data.results),
+//             genresService.getAllGenres().then(value => value.data.genres)
+//         ]
+//
+//         try {
+//             const [movies, genres] = await Promise.all(getters)
+//
+//             const allMoviesGenres = movies.map(movieGenres => {
+//                 const {genre_ids} = movieGenres;
+//
+//                 const movieGenresList = genre_ids.map(genreId => genres.find(item => item.id === genreId))
+//
+//                 return {
+//                     ...movieGenres,
+//                     movieGenresList
+//                 }
+//             })
+//         } catch (e) {
+//             return rejectWithValue(e.message)
+//         }
+//     }
+// );
 
 const movieSlice = createSlice({
     name: 'movieSlice',
@@ -80,9 +90,17 @@ const movieSlice = createSlice({
         status: null,
         error: null,
         images: [],
-        movieGenresList: [],
+        moviesOfGenre: [],
+        pageNumber: 1
     },
-    reducers: {},
+    reducers: {
+        goNextPage: (state, action) => {
+            state.pageNumber = state.pageNumber + 1
+        },
+        goPrevPage: (state, action) => {
+            state.pageNumber = state.pageNumber - 1
+        }
+    },
     extraReducers: {
         [getAllMovies.pending]: (state) => {
             state.status = 'pending'
@@ -126,20 +144,35 @@ const movieSlice = createSlice({
         },
 
 
-        [getMovieGenresList.pending]: (state) => {
+        // [getMovieGenresList.pending]: (state) => {
+        //     state.status = 'pending'
+        //     state.error = null
+        // },
+        // [getMovieGenresList.fulfilled]: (state, action) => {
+        //     state.status = 'fulfilled'
+        //     state.movieGenresList = action.payload
+        // },
+        // [getMovieGenresList.rejected]: (state, action) => {
+        //     state.status = 'rejected'
+        //     state.error = action.payload
+        // }
+
+        [getMovieOfGenre.pending]: (state) => {
             state.status = 'pending'
             state.error = null
         },
-        [getMovieGenresList.fulfilled]: (state, action) => {
+        [getMovieOfGenre.fulfilled]: (state, action) => {
             state.status = 'fulfilled'
-            state.movieGenresList = action.payload
+            state.moviesOfGenre = action.payload
+            // console.log(state.moviesOfGenre);
         },
-        [getMovieGenresList.rejected]: (state, action) => {
+        [getMovieOfGenre.rejected]: (state, action) => {
             state.status = 'rejected'
             state.error = action.payload
-        }
+        },
     }
 });
+export const {goNextPage,goPrevPage} = movieSlice.actions
 
 const moviesReducer = movieSlice.reducer;
 export default moviesReducer;

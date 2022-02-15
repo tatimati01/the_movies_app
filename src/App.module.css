@@ -81,6 +81,51 @@ body {
     justify-content: center;
 }
 
+.homePageWrapper {
+    display: flex;
+}
+
+.leftSideWrapper {
+    width: 20%;
+    padding: 10px;
+    /*border: lightsalmon 2px solid;*/
+}
+
+.rightSideWrapper {
+    /*width: 70%;*/
+    padding: 10px 20px;
+    /*border: lightsalmon 2px solid;*/
+}
+
+.prevNextBox {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
+
+.prevNextBox button {
+    border: none;
+    border-radius: 5px;
+    background: rgba(173, 216, 230, 0.6);
+    width: 120px;
+    padding: 10px 0;
+    color: white;
+}
+
+.prevNextBox button:disabled {
+    background: rgba(173, 216, 230, 0.1);
+    color: rgba(255, 255, 255, 0.1);
+}
+
+.currentPage {
+    margin: auto 10px;
+    font-weight: bolder;
+}
+
+.pageNumbers {
+    margin: auto 10px;
+}
+
 .footer {
     background: black;
     padding: 20px 100px;

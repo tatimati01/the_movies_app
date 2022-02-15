@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {NavLink, Outlet} from "react-router-dom";
+import {NavLink, Outlet, useNavigate} from "react-router-dom";
 
 import {getAllGenres} from "../../../store/genreSlice";
 import css from '../Genres.module.css';
@@ -14,6 +14,8 @@ const GenresList = () => {
     useEffect(() => {
         dispatch(getAllGenres())
     }, [dispatch])
+    
+    const navigator = useNavigate();
 
     return (
         <div>
@@ -22,13 +24,16 @@ const GenresList = () => {
                 {error && <h2>{error}</h2>}
                 {genres.map(genre =>
                     <div key={genre.name} className={css.genreStyle}>
-                        <button>
-                            <NavLink to={`${genre.name.toLowerCase()}`} name={genre.name}>{genre.name}</NavLink>
+                        <button onClick={()=> navigator(genre.name.toLowerCase())}>
+                            <NavLink to={`${genre.name.toLowerCase()}`} genre={genre}>
+                                {genre.name}
+                            </NavLink>
                         </button>
                     </div>
                 )}
             </div>
-            {<MoviesOfGenre/>}
+            {/*<Outlet/>*/}
+            {/*{<MoviesOfGenre/>}*/}
         </div>
 
     );

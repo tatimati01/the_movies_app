@@ -10,18 +10,6 @@ const MoviesList = () => {
     const {movies, status, error, pageNumber} = useSelector(state => state['moviesReducer']);
     const dispatch = useDispatch();
 
-    // const newPageNumber = pageNumber
-
-    // const goNextPage = () => {
-    //     const newPageNumber = pageNumber + 1
-    //
-    //     console.log(newPageNumber);
-    // }
-    // const goPrevPage = () => {
-    //     const newPageNumber = pageNumber - 1
-    //     console.log(newPageNumber);
-    // }
-
     useEffect(() => {
         dispatch(getAllMovies(pageNumber))
     }, [dispatch, pageNumber])

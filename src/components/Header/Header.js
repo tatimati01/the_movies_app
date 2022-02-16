@@ -8,17 +8,21 @@ import SearchForm from "../SearchForm/SearchForm";
 const Header = () => {
     return (
         <div className={css.header}>
+
             <div className={css.navbar}>
                 <NavLink to={'/'}>Home</NavLink>
                 <NavLink to={'/movies'}>Movies</NavLink>
                 <NavLink to={'/genres'}>Genres</NavLink>
             </div>
+
             <div>
                 <SearchForm/>
             </div>
+
             <div>
                 <UserInfo/>
             </div>
+
         </div>
     );
 };

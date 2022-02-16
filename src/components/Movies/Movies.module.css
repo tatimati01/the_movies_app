@@ -100,3 +100,50 @@
 .pageNumbers {
     margin: auto 10px;
 }
+
+.movieInfoPage {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    min-height: 100px;
+    background: rgba(173, 216, 230, 0.1);
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.movieInfoBox {
+    /*display: flex;*/
+    /*justify-content: center;*/
+    padding: 10px;
+}
+
+.movieTitle {
+    text-align: center;
+}
+
+.movieDescription {
+    text-align: justify;
+    text-indent: 30px;
+}
+
+.movieOverviewText {
+    text-align: justify;
+    text-indent: 30px;
+}
+
+.starRating button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.starRatingOn {
+    color: mediumpurple;
+}
+.starRatingOff {
+    color: lightblue;
+}
+
+.star {
+    font-size: x-large;
+}

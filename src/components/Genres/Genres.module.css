@@ -2,8 +2,6 @@
     width: 90%;
     display: flex;
     flex-direction: column;
-    /*justify-items: center;*/
-    /*align-content: center;*/
 }
 
 .genresWrapper {
@@ -39,7 +37,6 @@
     align-items: center;
     text-align: center;
     font-weight: bold;
-    /*color: lightblue;*/
     box-shadow: rgba(173, 216, 230, 0.1) 5px 5px 5px;
 }
 
@@ -63,4 +60,11 @@
 
 .outlet {
     margin: 20px;
+}
+
+.moviesOfGenreWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
 }

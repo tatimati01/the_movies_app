@@ -16,11 +16,11 @@ export const getAllGenres = createAsyncThunk(
 );
 
 
-export const getGenreById = createAsyncThunk(
-    'genreSlice/getGenreById',
-    async (genreId, {rejectWithValue}) => {
+export const getGenreByName = createAsyncThunk(
+    'genreSlice/getGenreByName',
+    async (genreName, {rejectWithValue}) => {
         try {
-            const genre = await genresService.getGenreById(genreId).then(value => value)
+            const genre = await genresService.getGenreById(genreName).then(value => value)
             return genre
         } catch (e) {
             return rejectWithValue(e.message)
@@ -53,15 +53,15 @@ const genreSlice = createSlice({
         },
 
 
-        [getGenreById.pending]: (state) => {
+        [getGenreByName.pending]: (state) => {
             state.status = 'pending'
             state.error = null
         },
-        [getGenreById.fulfilled]: (state, action) => {
+        [getGenreByName.fulfilled]: (state, action) => {
             state.status = 'fulfilled'
             state.genre = action.payload
         },
-        [getGenreById.rejected]: (state, action) => {
+        [getGenreByName.rejected]: (state, action) => {
             state.status = 'rejected'
             state.error = action.payload
         },

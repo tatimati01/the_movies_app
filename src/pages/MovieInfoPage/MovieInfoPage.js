@@ -1,4 +1,5 @@
 import React from 'react';
+
 import MovieInfo from "../../components/Movies/MovieInfo/MovieInfo";
 
 const MovieInfoPage = () => {
